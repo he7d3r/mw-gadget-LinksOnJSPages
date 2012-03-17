@@ -4,9 +4,9 @@
  * @author: [[User:Helder.wiki]]
  * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/LinksOnJSPages.js]] ([[File:User:Helder.wiki/Tools/LinksOnJSPages.js]])
  */
-/*global $, mw */
-/*jslint white: true */
-$(function () {
+/*jslint browser: true, white: true, plusplus: true, regexp: true */
+/*global jQuery, mediaWiki */
+( function ( $, mw /* , undefined */ ) {
 'use strict';
 var	regexes,
 	path = mw.config.get('wgArticlePath'),
@@ -46,4 +46,4 @@ if ($.inArray(mw.config.get('wgNamespaceNumber'), [2, 8]) !== -1 && mw.config.ge
 		});
 }
 
-});
+}( jQuery, mediaWiki ) );
