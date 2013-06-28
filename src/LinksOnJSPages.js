@@ -4,11 +4,12 @@
  * @author: [[User:Helder.wiki]]
  * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/LinksOnJSPages.js]] ([[File:User:Helder.wiki/Tools/LinksOnJSPages.js]])
  */
-/*jslint browser: true, white: true, plusplus: true, regexp: true */
+/*jshint browser: true, camelcase: true, curly: true, eqeqeq: true, immed: true, latedef: true, newcap: true, noarg: true, noempty: true, nonew: true, quotmark: true, undef: true, unused: true, strict: true, trailing: true, maxlen: 120, evil: true, laxbreak:true, onevar: true */
 /*global jQuery, mediaWiki */
-( function ( $, mw /* , undefined */ ) {
+( function ( mw, $ ) {
 'use strict';
-var	regexes,
+
+var regexes,
 	path = mw.config.get('wgArticlePath'),
 	catNS = mw.config.get('wgFormattedNamespaces')['14'];
 regexes = [
@@ -21,7 +22,11 @@ regexes = [
 		'[[<a href="' + path + '">$2</a>]]'
 	],
 	[ // [[Category:Links|with an index for sorting]]
-		new RegExp('\\[\\[<a href="' + path.replace('$1', '(?:Category|' + catNS + '):([^"]+)') + '">([^<]+)</a>\\]\\]', 'gi'),
+		new RegExp(
+			'\\[\\[<a href="' +
+			path.replace('$1', '(?:Category|' + catNS + '):([^"]+)') +
+			'">([^<]+)</a>\\]\\]', 'gi'
+		),
 		'[[<a href="' + path.replace('$1', 'Category:$1') + '">' + catNS + ':$1</a>|$2]]'
 	],
 	[ // Links to MediaWiki site (Workaround for [[bugzilla:22407]])
@@ -38,7 +43,10 @@ function createLinks(t) {
 	return t;
 }
 
-if ($.inArray(mw.config.get('wgNamespaceNumber'), [2, 8]) !== -1 && mw.config.get('wgPageName').match(/\.(js|css)$/) && $.inArray(mw.config.get('wgAction'), ['view', 'purge']) !== -1) {
+if ($.inArray(mw.config.get('wgNamespaceNumber'), [2, 8]) !== -1
+	&& mw.config.get('wgPageName').match(/\.(js|css)$/)
+	&& $.inArray(mw.config.get('wgAction'), ['view', 'purge']) !== -1
+) {
 	$('#bodyContent pre')
 		.first().find('span.coMULTI, span.co1') //FIXME: "span.st0" makes this too slow =(
 		.each(function () {
@@ -46,4 +54,4 @@ if ($.inArray(mw.config.get('wgNamespaceNumber'), [2, 8]) !== -1 && mw.config.ge
 		});
 }
 
-}( jQuery, mediaWiki ) );
+}( mediaWiki, jQuery ) );
