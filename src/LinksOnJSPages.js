@@ -43,8 +43,13 @@ function createLinks(t) {
 	return t;
 }
 
-if ($.inArray(mw.config.get('wgNamespaceNumber'), [2, 8]) !== -1
-	&& mw.config.get('wgPageName').match(/\.(js|css)$/)
+if ( (
+	(
+		$.inArray(mw.config.get('wgNamespaceNumber'), [2, 8]) !== -1
+		&& mw.config.get('wgPageName').match(/\.(js|css)$/)
+	)
+	|| mw.config.get('wgNamespaceNumber') === 828 /* Module */
+	)
 	&& $.inArray(mw.config.get('wgAction'), ['view', 'purge']) !== -1
 ) {
 	$('#bodyContent pre')
