@@ -1,6 +1,6 @@
 /**
  * Convert link syntax [[zz]] to true links on javascript and css pages
- * (Workaround for [[bugzilla:10410]] - see [[w:en:Wikipedia:Village pump (technical)/Archive 84#Script for wikilinks in CSS/JS pages]])
+ * (Workaround for [[phab:T12410]] - see [[w:en:Wikipedia:Village pump (technical)/Archive 84#Script for wikilinks in CSS/JS pages]])
  * @author: Helder (https://github.com/he7d3r)
  * @license: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
  */
