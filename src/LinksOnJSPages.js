@@ -47,7 +47,7 @@
 		&& $.inArray(mw.config.get('wgAction'), ['view', 'purge']) !== -1
 	) {
 		$('#bodyContent pre')
-			.first().find('span.coMULTI, span.co1') //FIXME: "span.st0" makes this too slow =(
+			.first().find('span.c1, span.cm, span.coMULTI, span.co1') //FIXME: "span.st0" makes this too slow =(
 			.each(function () {
 				$(this).html(createLinks($(this).html()));
 			});
